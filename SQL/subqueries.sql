@@ -42,8 +42,12 @@ where dept_name not in (Select distinct dept_name from employee)
 -- A Subquery which is related to the outer query
 -- Q4. Find the employees in each department who earn more than the average salary in that department.
 
+Select avg(salary) avg_salary from employee where dept_name = 'specific_dept'
 
-
+select *
+from employee e1
+where salary > (select avg(salary) from employee e2
+				where e2.dept_name = e1.dept_name)
 
 
 
